@@ -23,6 +23,7 @@ db.sequelize = sequelize;
 db.user = require('../models/user.model')(sequelize,Sequelize);
 db.role = require('../models/role.model')(sequelize,Sequelize);
 db.translation = require('../models/translationhistory.model')(sequelize,Sequelize);
+db.task=require('../models/task.model')(sequelize,Sequelize);
 
 // through, foreignKey, otherKey, is for a new table user_roles as 
 // connection between users and roles table via their primary key as foreign keys.

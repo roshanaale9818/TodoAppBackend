@@ -29,6 +29,12 @@ verifyToken = (req, res, next) => {
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
+      // if){
+      //   res.status(403).send({
+      //       status:"error",
+      //       message:"Sorry internal server error"
+      //   })
+      // }
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "admin") {
           next();

@@ -29,6 +29,8 @@ const Role = db.role;
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/translationshistory.routes')(app);
+require('./app/routes/task.routes')(app);
+
 db.sequelize.sync({force:true}).then(()=>{
     console.log("Drop and Resync Db");
     initial(); // creates 3 rows in database

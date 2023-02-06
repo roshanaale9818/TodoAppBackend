@@ -16,27 +16,38 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
-      if (req.body.roles) {
-        Role.findAll({
-          where: {
-            name: {
-              [Op.or]: req.body.roles
-            }
-          }
-        }).then(roles => {
-          user.setRoles(roles).then(() => {
-            res.send({ message: "User was registered successfully!" });
-          });
-        });
-      } else {
-        // user role = 1
-        user.setRoles([1]).then(() => {
-          res.send({ message: "User was registered successfully!" });
+      // if (req.body.roles) {
+      //   Role.findAll({
+      //     where: {
+      //       name: {
+      //         [Op.or]: req.body.roles
+      //       }
+      //     }
+      //   }).then(roles => {
+      //     console.log("roles is in ",roles)
+      //     user.setRoles(roles).then(() => {
+      //       res.send({ message: "User was registered successfully!" });
+      //     });
+      //   });
+      // } else {
+
+      if(req.body.isAdmin==="007"){
+        //3 is admin as we have coded in server.js
+        console.log("THIS IS USER",user)
+        user.setRoles([3]).then(() => {
+          res.send({ status:"ok",message: "User was registered successfully!" });
         });
       }
+       else{
+         // user role = 1
+         user.setRoles([1]).then(() => {
+          res.send({ status:"ok", message: "User was registered successfully!" });
+        });
+       }
+      // }
     })
     .catch(err => {
-      res.status(500).send({ message: err.message });
+      res.status(500).send({status:"error", message: err.message });
     });
 };
 
