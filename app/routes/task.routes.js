@@ -12,5 +12,8 @@ module.exports = function(app){
     app.post("/api/task/getTasks",
     [authJwt.verifyToken],taskController.getTasksByUser);
     app.post("/api/task/createTask",[authJwt.verifyToken],taskController.createTask);
+    app.post("/api/task/updateTask",[authJwt.verifyToken],taskController.updateTask);
+    app.post("/api/task/deleteTask",[authJwt.verifyToken],taskController.deleteTask);
+
 
 }
