@@ -14,6 +14,9 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());// parsing requesting content type to application/json 
 app.use(bodyParser.urlencoded({extended:true}));
+app.get('/',(req,res)=>{
+  res.send("Todo app is running");
+})
 app.get("/",(req,res)=>{
     res.json({status:"ok",message:"Welcome to Node js app."});
 
