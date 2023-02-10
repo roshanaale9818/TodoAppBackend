@@ -15,7 +15,8 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());// parsing requesting content type to application/json 
 app.use(bodyParser.urlencoded({extended:true}));
 app.get('/',(req,res)=>{
-  res.send("Todo app is running");
+  res.send("Todo app is running"); 
+
 })
 app.get("/",(req,res)=>{
     res.json({status:"ok",message:"Welcome to Node js app."});
@@ -35,7 +36,7 @@ require('./app/routes/translationshistory.routes')(app);
 require('./app/routes/task.routes')(app);
 
 db.sequelize.sync({force:true}).then(()=>{
-    console.log("Drop and Resync Db");
+    // console.log("Drop and Resync Db");
     initial(); // creates 3 rows in database
 })
 const initial = ()=> {
