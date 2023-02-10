@@ -36,7 +36,7 @@ require('./app/routes/translationshistory.routes')(app);
 require('./app/routes/task.routes')(app);
 
 db.sequelize.sync({force:true}).then(()=>{
-    // console.log("Drop and Resync Db");
+    console.log("Drop and Resync Db");
     initial(); // creates 3 rows in database
 })
 const initial = ()=> {
